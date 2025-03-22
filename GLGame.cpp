@@ -109,7 +109,7 @@ void GLGame::InitializePipeline()
 	GLProgramId = glCreateProgram();
 
 	// Compile and attach Vertex Shader
-	if (VertexShaderId = InitializeShader(ShaderType::VertexShader, "D:\\Repos\\MiniGamesGL\\Shaders\\BasicVertex.shader"))
+	if (VertexShaderId = InitializeShader(ShaderType::VertexShader, "Shaders/BasicVertex.shader"))
 		glAttachShader(GLProgramId, VertexShaderId);
 	else
 	{
@@ -118,7 +118,7 @@ void GLGame::InitializePipeline()
 	}
 	
 	// Compile and attach Fragment Shader
-	if (FragmentShaderId = InitializeShader(ShaderType::FragmentShader, "D:\\Repos\\MiniGamesGL\\Shaders\\BasicFragment.shader"))
+	if (FragmentShaderId = InitializeShader(ShaderType::FragmentShader, "Shaders/BasicFragment.shader"))
 		glAttachShader(GLProgramId, FragmentShaderId);
 	else
 	{
