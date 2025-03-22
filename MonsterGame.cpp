@@ -2,6 +2,9 @@
 #include "GameManager.h"
 #include "SceneManager.h"
 
+#include "Box.h"
+#include "GreyFlag.h"
+
 #include <GLFW\glfw3.h>
 #include <memory>
 
@@ -14,27 +17,15 @@ void MonsterGame::LoadScene()
 {
 	SpawnParameters playerSpawnParameters;
 	playerSpawnParameters.position.setX(-0.3f);
-	playerSpawnParameters.position.setZ(-0.5f);
+	playerSpawnParameters.position.setZ(-1.0f);
 	playerSpawnParameters.scale.set(0.1f, 0.1f, 0.1f);
-	Player = GameManager::get().GetSceneManager()->SpawnActor("Resources/cube.obj", "Resources/box.png", playerSpawnParameters);	// add the texture to be loaded per object
-
-	SpawnParameters enemySpawnParameters;
-	enemySpawnParameters.position.setX(0.3f);
-	//enemySpawnParameters.position.setZ(-1.5f);
-	enemySpawnParameters.scale.set(0.1f, 0.1f, 1.0f);
-	GameManager::get().GetSceneManager()->SpawnActor("Resources/test.obj", "Resources/Grey.png", enemySpawnParameters);
-
-	/*SpawnParameters playerSpawnParameters;
-	playerSpawnParameters.position.setX(-0.3f);
-	playerSpawnParameters.position.setZ(-0.5f);
-	playerSpawnParameters.scale.set(0.1f, 0.1f, 0.3f);
-	Player = GameManager::get().GetSceneManager()->SpawnActor("Resources/test.obj", "Resources/box.png", playerSpawnParameters);
+	Player = GameManager::get().GetSceneManager()->SpawnActor<Box>(playerSpawnParameters);	// add the texture to be loaded per object
 
 	SpawnParameters enemySpawnParameters;
 	enemySpawnParameters.position.setX(0.3f);
 	enemySpawnParameters.position.setZ(-0.5f);
-	enemySpawnParameters.scale.set(0.1f, 0.1f, 0.3f);
-	GameManager::get().GetSceneManager()->SpawnActor("Resources/test.obj", "Resources/Grey.png", enemySpawnParameters);*/
+	enemySpawnParameters.scale.set(0.1f, 0.1f, 1.0f);
+	GameManager::get().GetSceneManager()->SpawnActor<GreyFlag>(enemySpawnParameters);
 }
 
 

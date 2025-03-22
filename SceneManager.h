@@ -24,6 +24,17 @@ public:
 	~SceneManager() { ClearScene(); };
 
 	void RenderSceneObjects(unsigned int transformationMatrixID);
-	std::shared_ptr<Actor> SpawnActor(std::string meshPath, std::string texturePath, SpawnParameters& spawnParameters);
 	void ClearScene() { GameObjects.clear(); };
+
+	template<class T>
+	std::shared_ptr<Actor> SpawnActor(SpawnParameters& spawnParameters)
+	{
+		std::shared_ptr<Actor> newActor = std::make_shared<T>(0);	// use id as you should, GameObjects map?
+		newActor->SetPosition(spawnParameters.position.getX(), spawnParameters.position.getY(), spawnParameters.position.getZ());
+		newActor->SetAngles(spawnParameters.rotation.getX(), spawnParameters.rotation.getY(), spawnParameters.rotation.getZ());
+		newActor->SetScale(spawnParameters.scale.getX(), spawnParameters.scale.getY(), spawnParameters.scale.getZ());
+
+		GameObjects.push_back(newActor);
+		return newActor;
+	}
 };
