@@ -3,3 +3,4 @@
 *.tlog
 *.idb
 *.pdb
+x64/Debug/GLGame.obj
